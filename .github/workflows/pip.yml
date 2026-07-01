@@ -28,10 +28,10 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
 
     - name: Setup 🐍 3.8
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v6
       with:
         python-version: 3.8
 
@@ -50,10 +50,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
 
     - name: Setup 🐍 3.8
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v6
       with:
         python-version: 3.8
 
@@ -73,13 +73,13 @@ jobs:
       run: twine check dist/*
 
     - name: Save standard package
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: standard
         path: dist/pybind11-*
 
     - name: Save global package
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: global
         path: dist/pybind11_global-*
@@ -101,10 +101,10 @@ jobs:
 
     steps:
     # Downloads all to directories matching the artifact names
-    - uses: actions/download-artifact@v4
+    - uses: actions/download-artifact@v8
 
     - name: Generate artifact attestation for sdist and wheel
-      uses: actions/attest-build-provenance@520d128f165991a6c774bcb264f323e3d70747f4 # v2.2.0
+      uses: actions/attest-build-provenance@0f67c3f4856b2e3261c31976d6725780e5e4c373 # v4.1.1
       with:
         subject-path: "*/pybind11*"
 
